@@ -1,13 +1,20 @@
-const WishList = ({ wishes }) => {
-  if (!wishes.length) {
-    return <p>You don't have any desires yet</p>;
-  }
+import Wish from '../Wish/Wish';
 
+const WishList = ({ wishes, deleteWish }) => {
   return (
     <ul>
+      {!wishes.length && <p>You don't have any desires yet</p>}
       {wishes.map((wish) => {
         const { text, id, priority } = wish;
-        return <Wish key={id} text={text} priority={priority} />;
+        return (
+          <Wish
+            key={id}
+            id={id}
+            text={text}
+            priority={priority}
+            deleteWish={deleteWish}
+          />
+        );
       })}
     </ul>
   );
