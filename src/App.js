@@ -21,6 +21,7 @@ function App() {
     <div className="App">
       <h1>Wish List</h1>
       <Form addWish={addWishHandler} />
+      
     </div>
   );
 }
