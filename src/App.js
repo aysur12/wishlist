@@ -8,7 +8,7 @@ import './App.css';
 function App() {
   const [wishes, setWishes] = useState([]);
 
-  const addWishHandler = (text, priority) => {
+  const onAddWishHandler = (text, priority) => {
     const newWish = {
       text: text,
       id: uuidv4(),
@@ -28,11 +28,26 @@ function App() {
     });
   };
 
+  const onEditTextHandler = (text, id) => {
+    const updatedWish = wishes.find((wish) => wish.id === id);
+    updatedWish.text = text;
+    console.log(wishes)
+
+    // setWishes((prevWishes) => {
+    //   const updatedWishes = [...prevWishes, updatedWish];
+    //   return updatedWishes;
+    // })
+  };
+
   return (
     <div className="App">
       <h1>Wish List</h1>
-      <Form addWish={addWishHandler} />
-      <WishList wishes={wishes} deleteWish={onDeleteWishHandler} />
+      <Form addWish={onAddWishHandler} />
+      <WishList
+        wishes={wishes}
+        deleteWish={onDeleteWishHandler}
+        editText={onEditTextHandler}
+      />
     </div>
   );
 }

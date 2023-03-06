@@ -1,6 +1,6 @@
 import Wish from '../Wish/Wish';
 
-const WishList = ({ wishes, deleteWish }) => {
+const WishList = ({ wishes, deleteWish, editText }) => {
   return (
     <ul>
       {!wishes.length && <p>You don't have any desires yet</p>}
@@ -13,6 +13,7 @@ const WishList = ({ wishes, deleteWish }) => {
             text={text}
             priority={priority}
             deleteWish={deleteWish}
+            editText={editText}
           />
         );
       })}

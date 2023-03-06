@@ -7,7 +7,7 @@ const Priority = ({priority, onChangePriority}) => {
     <div>
       <div>
         <label>Priority</label>
-        <select value={priority} onChange={priorityChangeHandler}>
+        <select value={priority} onChange={priorityChangeHandler} required>
           <option value="low">Low</option>
           <option value="medium">Medium</option>
           <option value="high">High</option>
