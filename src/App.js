@@ -31,12 +31,12 @@ function App() {
   const onEditTextHandler = (text, id) => {
     const updatedWish = wishes.find((wish) => wish.id === id);
     updatedWish.text = text;
-    console.log(wishes)
+  };
 
-    // setWishes((prevWishes) => {
-    //   const updatedWishes = [...prevWishes, updatedWish];
-    //   return updatedWishes;
-    // })
+  const onEditPriority = (priority, id) => {
+    const updatedWish = wishes.find((wish) => wish.id === id);
+    updatedWish.priority = priority;
+    console.log(wishes);
   };
 
   return (
@@ -47,6 +47,7 @@ function App() {
         wishes={wishes}
         deleteWish={onDeleteWishHandler}
         editText={onEditTextHandler}
+        editPriority={onEditPriority}
       />
     </div>
   );
