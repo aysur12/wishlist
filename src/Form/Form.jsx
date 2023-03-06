@@ -5,20 +5,29 @@ import styles from './Form.module.scss';
 
 const Form = ({ addWish }) => {
   const [text, setText] = useState('');
+  const [isInputValid, setIsInputValid] = useState(true);
   const [selectedPriority, setSelectedPriority] = useState('low');
 
   const priorityChangeHandler = (priority) => {
     setSelectedPriority(priority);
   };
 
-  const onSubmitHandler = (event) => {
-    event.preventDefault();
-    addWish(text, selectedPriority);
-    setText('');
+  const onChangeHandler = (event) => {
+    if (event.target.value.trim().length) {
+      setIsInputValid(true);
+    }
+    setText(event.target.value);
   };
 
-  const onChangeHandler = (event) => {
-    setText(event.target.value);
+  
+  const onSubmitHandler = (event) => {
+    event.preventDefault();
+    if (!text.trim().length) {
+      setIsInputValid(false);
+      return;
+    }
+    addWish(text, selectedPriority);
+    setText('');
   };
 
   return (

@@ -1,12 +1,18 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
+import loadJSON from './helpers/loadJSON';
+import saveJSON from './helpers/saveJSON';
 import Form from './Form/Form';
 import WishList from './WishList/WishList';
 
 import './App.css';
 
 function App() {
-  const [wishes, setWishes] = useState([]);
+  const [wishes, setWishes] = useState(loadJSON('wishes') || []);
+
+  useEffect(() => {
+    saveJSON('wishes', wishes);
+  }, [wishes]);
 
   const onAddWishHandler = (text, priority) => {
     const newWish = {
@@ -29,14 +35,17 @@ function App() {
   };
 
   const onEditTextHandler = (text, id) => {
-    const updatedWish = wishes.find((wish) => wish.id === id);
+    const updatedWishes = [...wishes];
+    const updatedWish = updatedWishes.find((wish) => wish.id === id);
     updatedWish.text = text;
+    setWishes(updatedWishes)
   };
 
   const onEditPriority = (priority, id) => {
-    const updatedWish = wishes.find((wish) => wish.id === id);
+    const updatedWishes = [...wishes];
+    const updatedWish = updatedWishes.find((wish) => wish.id === id);
     updatedWish.priority = priority;
-    console.log(wishes);
+    setWishes(updatedWishes)
   };
 
   return (
