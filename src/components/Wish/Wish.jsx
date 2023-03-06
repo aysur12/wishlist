@@ -26,7 +26,7 @@ const Wish = (props) => {
   };
 
   return (
-    <div>
+    <li>
       <p onDoubleClick={makeEditableTextHandler} onBlur={editTextHandler}>
         {text}
       </p>
@@ -35,7 +35,7 @@ const Wish = (props) => {
         onChangePriority={priorityChangeHandler}
       />
       <RiDeleteBin2Line onClick={deleteWishHandler} />
-    </div>
+    </li>
   );
 };
 

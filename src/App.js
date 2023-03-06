@@ -2,9 +2,8 @@ import { useEffect, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import loadJSON from './helpers/loadJSON';
 import saveJSON from './helpers/saveJSON';
-import Form from './Form/Form';
-import WishList from './WishList/WishList';
-
+import Form from './components/Form/Form';
+import WishList from './components/WishList/WishList';
 import './App.css';
 
 function App() {
@@ -14,6 +13,7 @@ function App() {
     saveJSON('wishes', wishes);
   }, [wishes]);
 
+  
   const onAddWishHandler = (text, priority) => {
     const newWish = {
       text: text,
@@ -25,6 +25,7 @@ function App() {
       const updatedWishes = [...prevWishes, newWish];
       return updatedWishes;
     });
+
   };
 
   const onDeleteWishHandler = (id) => {
@@ -32,21 +33,24 @@ function App() {
       const updatedWishes = prevWishes.filter((wish) => wish.id !== id);
       return updatedWishes;
     });
+
   };
 
   const onEditTextHandler = (text, id) => {
     const updatedWishes = [...wishes];
     const updatedWish = updatedWishes.find((wish) => wish.id === id);
     updatedWish.text = text;
-    setWishes(updatedWishes)
+    setWishes(updatedWishes);
   };
 
-  const onEditPriority = (priority, id) => {
+  const onEditPriorityHandler = (priority, id) => {
     const updatedWishes = [...wishes];
     const updatedWish = updatedWishes.find((wish) => wish.id === id);
     updatedWish.priority = priority;
-    setWishes(updatedWishes)
+    setWishes(updatedWishes);
+
   };
+
 
   return (
     <div className="App">
@@ -56,7 +60,7 @@ function App() {
         wishes={wishes}
         deleteWish={onDeleteWishHandler}
         editText={onEditTextHandler}
-        editPriority={onEditPriority}
+        editPriority={onEditPriorityHandler}
       />
     </div>
   );
