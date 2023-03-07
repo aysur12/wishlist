@@ -1,17 +1,12 @@
-import {useEffect, useState } from 'react';
+import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import loadJSON from './helpers/loadJSON';
-import saveJSON from './helpers/saveJSON';
 import Form from './components/Form/Form';
 import WishList from './components/WishList/WishList';
 import './App.css';
 
 function App() {
   const [wishes, setWishes] = useState(loadJSON('wishes') || []);
-
-  useEffect(() => {
-    saveJSON('wishes', wishes);
-  }, [wishes]);
 
   const onAddWishHandler = (text, priority) => {
     const newWish = {
