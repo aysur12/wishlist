@@ -1,0 +1,40 @@
+.wish {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  border: 2px solid #fff;
+  border-radius: 6px;
+
+  @media screen and (max-width: 480px) {
+    flex-direction: column-reverse;
+  }
+
+  &__text {
+    flex-basis: 87%;
+    padding: 22px 5px 22px 10px;
+    color: #1b1f2b;
+    font-size: 20px;
+    text-align: left;
+    word-break: break-all;
+    outline: none;
+
+    &:focus {
+      background-color: #bdbbbb;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 5px 10px 5px 5px;
+    background-color: #046651;
+  }
+
+  &__button {
+    width: 30px;
+    height: 30px;
+  }
+}

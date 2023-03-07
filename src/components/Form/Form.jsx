@@ -19,7 +19,6 @@ const Form = ({ addWish }) => {
     setText(event.target.value);
   };
 
-  
   const onSubmitHandler = (event) => {
     event.preventDefault();
     if (!text.trim().length) {
@@ -31,23 +30,25 @@ const Form = ({ addWish }) => {
   };
 
   return (
-    <form className={styles.form} onSubmit={onSubmitHandler}>
-      <label className={styles.formLabel}>
+    <form className={styles['form']} onSubmit={onSubmitHandler}>
+      <label className={styles['form__label']}>
         <input
-          className={styles.formInput}
+          className={styles['form__input']}
           type="text"
           placeholder="Enter a wish"
           value={text}
           onChange={onChangeHandler}
         />
       </label>
-      <Priority
-        priority={selectedPriority}
-        onChangePriority={priorityChangeHandler}
-      />
-      <Button type="submit" title="Add">
-        Add
-      </Button>
+      <div className={styles['form__bottom-block']}>
+        <Priority
+          priority={selectedPriority}
+          onChangePriority={priorityChangeHandler}
+        />
+        <Button type="submit" title="Add">
+          Add
+        </Button>
+      </div>
     </form>
   );
 };
