@@ -27,6 +27,10 @@
     font-size: 16px;
     border: none;
     border-radius: 10px;
+
+    &_invalid {
+      background: rgb(243, 157, 157);
+    }
   }
 }
 

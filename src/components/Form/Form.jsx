@@ -33,7 +33,9 @@ const Form = ({ addWish }) => {
     <form className={styles['form']} onSubmit={onSubmitHandler}>
       <label className={styles['form__label']}>
         <input
-          className={styles['form__input']}
+          className={`${styles['form__input']} ${
+            !isInputValid && styles['form__input_invalid']
+          } `}
           type="text"
           placeholder="Enter a wish"
           value={text}

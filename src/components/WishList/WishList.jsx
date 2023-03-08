@@ -22,7 +22,6 @@ const WishList = ({ wishes, ...props }) => {
       let newWishes = [...wishes].filter((wish) => wish.priority === priority);
       setFilteredWishes(newWishes);
     }
-    saveJSON('priority', priority);
   }
 
   return (
